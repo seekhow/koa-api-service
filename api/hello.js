@@ -1,5 +1,5 @@
 const hello = {
-  getHello: async (ctx, next) => {
+  getHello: async (ctx) => {
     ctx.body = 'hello wolrd';
   },
 };

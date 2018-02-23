@@ -2,7 +2,6 @@ const router = require('koa-joi-router');
 const hello = require('./hello');
 const user = require('./user');
 
-const Joi = router.Joi;
 const publicRoute = router();
 const userRoute = router();
 

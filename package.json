@@ -4,8 +4,8 @@
   "description": "koa service server",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon main",
-    "lint": "eslint"
+    "start": "eslint . && nodemon main",
+    "lint": "eslint ."
   },
   "author": "seekhow",
   "license": "MIT",
