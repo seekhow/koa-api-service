@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-const config = require('../config/mongo');
 
-module.exports = async (ctx, next) => {
-  mongoose.connect(config.url);
-  mongoose.Promise = global.Promise;
-  await next();
+module.exports = function(config){
+  return async (ctx, next) => {
+    mongoose.connect(config.url);
+    mongoose.Promise = global.Promise;
+    await next();
+  };
 };
