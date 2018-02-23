@@ -67,8 +67,57 @@ const create = {
   },
 };
 
+const update = {
+  validate: {
+    body: {
+      id: Joi.string(),
+      name: Joi.string(),
+      password: Joi.string(),
+      email: Joi.string().email(),
+      tags: Joi.array().optional(),
+    },
+    type: 'json',
+  },
+  handler: async (ctx) => {
+    const payload = ctx.request.body;
+    ctx.logger.info('payload[更新用户资料]:', payload);
+    try {
+      await userModel.update({ id: payload.id }, payload);
+    } catch (error) {
+      ctx.logger.error('错误!查询数据库错误![更新用户资料]');
+      ctx.body = Boom.badRequest();
+    }
+    ctx.logger.info('写入数据库成功[更新用户资料]', payload);
+    ctx.status = 200;
+    ctx.body = payload;
+  },
+};
+
+const remove = {
+  validate: {
+    params: {
+      id: Joi.string(),
+    },
+  },
+  handler: async (ctx) => {
+    const { id } = ctx.request.params;
+    ctx.logger.info('params[删除用户资料]:', id);
+    try {
+      await userModel.remove({ id });
+    } catch (error) {
+      ctx.logger.error('查询数据库错误![删除用户资料]');
+      ctx.body = Boom.badImplementation();
+    }
+    ctx.logger.info('写入数据库成功[删除用户资料]', id);
+    ctx.status = 204;
+    ctx.body = {};
+  },
+};
+
 module.exports = {
   getOne,
   create,
   getAll,
+  update,
+  remove,
 };
