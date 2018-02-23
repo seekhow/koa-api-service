@@ -1,0 +1,20 @@
+{
+  "name": "apollo-koa",
+  "version": "1.0.0",
+  "description": "koa service server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon main"
+  },
+  "author": "seekhow",
+  "license": "MIT",
+  "dependencies": {
+    "boom": "^7.1.1",
+    "koa": "^2.5.0",
+    "koa-joi-router": "^5.1.0",
+    "koa-logger": "^3.1.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.0.6",
+    "nodemon": "^1.15.0"
+  }
+}
