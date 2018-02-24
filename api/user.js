@@ -103,7 +103,7 @@ const remove = {
     const { id } = ctx.request.params;
     ctx.logger.info('params[删除用户资料]:', id);
     try {
-      await userModel.remove({ id });
+      await userModel.remove({ _id: id });
     } catch (error) {
       ctx.logger.error('查询数据库错误![删除用户资料]');
       ctx.body = Boom.badImplementation();
