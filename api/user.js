@@ -82,7 +82,7 @@ const update = {
     const payload = ctx.request.body;
     ctx.logger.info('payload[更新用户资料]:', payload);
     try {
-      await userModel.update({ id: payload.id }, payload);
+      await userModel.update({ _id: payload.id }, payload);
     } catch (error) {
       ctx.logger.error('错误!查询数据库错误![更新用户资料]');
       ctx.body = Boom.badRequest();
